@@ -8,3 +8,4 @@ To add this to your Hammer Editor:
 1. Open Hammer Options
 2. On the Game Configurations tab, locate the Game Data files box, and click Add.
 3. Browse to where you saved the fgd file (e.g. GarrysMod\garrysmod\zombiesurvival.fgd) and select the FGD file. Click Apply and you're all set to start mapping with Zombie Survival entities.
+4. (Optional) Merge the 'materials' folder with whichever game you are running Hammer from to see sprites for certain entities.
