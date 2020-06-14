@@ -569,7 +569,7 @@
 	input disable(void) : "Disables beats."
 ]
 
-@PointClass base(Targetname) = logic_nobuy  : "ZS: Allows you to disable purchases from the points shop (arsenal crate/pack and sigil only)."
+@PointClass base(Targetname) iconsprite("editor/logic_nobuy.vmt") = logic_nobuy : "ZS: Allows you to disable purchases from the points shop (arsenal crate/pack and sigil only)."
 [
 	// Keys
 	enabled(choices) : "Enabled" : 1 : "Allows purchasing from the points shop" =
@@ -583,7 +583,7 @@
 	input disable(void) : "Disables purchases."
 ]
 
-@PointClass base(Targetname) = logic_dynamicspawning : "ZS: Allows you to control dynamic spawning."
+@PointClass base(Targetname) iconsprite("editor/logic_dynamicspawning.vmt") = logic_dynamicspawning : "ZS: Allows you to control dynamic spawning."
 [
 	// Keys
 	enabled(choices) : "Enabled" : 1 : "Should dynamic spawning be on?" =
@@ -597,7 +597,7 @@
 	input disable(void) : "Disable dynamic spawning."
 ]
 
-@PointClass base(Targetname) = logic_gamerules  : "ZS: Allows you to control game rules."
+@PointClass base(Targetname) iconsprite("editor/logic_gamerules.vmt") = logic_gamerules  : "ZS: Allows you to control game rules."
 [
 	// Keys
 	disablefreshdead(choices) : "Disable Fresh Dead" : 0 : "Prevents humans from turning into fresh dead on death." =
@@ -659,7 +659,7 @@
 	radius(integer) : "Radius" : 250 : "Radius that this can damage humans/heal zombies."
 ]
 
-@PointClass base(Targetname) = logic_pickupdrop : "ZS: Controls events when players pickup or drop things."
+@PointClass base(Targetname) iconsprite("editor/logic_pickupdrop.vmt") = logic_pickupdrop : "ZS: Controls events when players pickup or drop things."
 [
 	// Keys
 	EntityToWatch(target_destination) : "Entity to Watch" : " " : "Name of the entity to watch (for outputs)."
@@ -675,7 +675,7 @@
 
 ]
 
-@PointClass base(Targetname) = logic_points : "ZS: Allows you to control and call outputs based on points."
+@PointClass base(Targetname) iconsprite("editor/logic_points.vmt") = logic_points : "ZS: Allows you to control and call outputs based on points."
 [
 	// Inputs
 	input addtoactivator(float)           : "Adds <number> to the activator."
@@ -694,7 +694,7 @@
 	output OnConditionFailed(void)        : "Thrown by ourselves when a condition is failed. The activator is always the player in question. The arguments are the amount that was checked against."
 ]
 
-@PointClass base(Targetname) = logic_brains : "ZS: Allows you to control and call outputs based on brains."
+@PointClass base(Targetname) iconsprite("editor/logic_brains.vmt") = logic_brains : "ZS: Allows you to control and call outputs based on brains."
 [
 	// Inputs
 	input addtoactivator(integer)         : "Adds <number> to the activator."
@@ -716,7 +716,7 @@
 	output OnConditionFailed(void)        : "Thrown by ourselves when a condition is failed. The activator is always the player in question. The arguments are the amount that was checked against."
 ]
 
-@PointClass base(Targetname) = logic_startingloadout : "ZS: Allows you to control what people start with."
+@PointClass base(Targetname) iconsprite("editor/logic_startingloadout.vmt") = logic_startingloadout : "ZS: Allows you to control what people start with."
 [
 	// Keys
 	startingloadout(string) : "Starting Loadout" : "worth" : "Sets the starting load out for all new humans. This is a list of entity classes which is then separated by commas. For example: weapon_zs_peashooter:1,weapon_zs_axe:1,item_ammo_pistol:2 would give everyone a peashooter, an axe, and spawn two boxes of pistol ammo on them. It also accepts none for absolutely no starting items and worth for using the worth menu (default)."
@@ -727,7 +727,7 @@
 	input setredeemloadout(string) : "Sets the redeem loadout."
 ]
 
-@PointClass base(Targetname) = logic_worth : "ZS: Allows you to control Worth."
+@PointClass base(Targetname) iconsprite("editor/logic_worth.vmt") = logic_worth : "ZS: Allows you to control Worth."
 [
 	// Keys
 	startingworth(integer) : "Starting Worth" : 100 : "The amount of Worth to start with. Use 0 to disable Worth."
@@ -736,21 +736,21 @@
 	input setstartingworth(integer) : "Sets the amount of worth to start with."
 ]
 
-@PointClass base(Targetname) = logic_barricade : "ZS: Allows or disallows specific entities from being nailed."
+@PointClass base(Targetname) iconsprite("editor/logic_barricade.vmt") = logic_barricade : "ZS: Allows or disallows specific entities from being nailed."
 [
 	// Inputs
 	input disablethese(string) : "Takes the arguments in the form of a comma-separated array and disables any entities with that name. For example, disablethese objective1,somethingimportant,somethingelse. This would disable nailing of those entities."
 	input enablethese(string)  : "Takes the arguments in the form of a comma-separated array and enables any entities with that name. For example, enablethese objective1,somethingimportant,somethingelse. This would enable nailing of those entities."
 ]
 
-@PointClass base(Targetname) = logic_difficulty : "ZS: Adjusts the difficulty of the game."
+@PointClass base(Targetname) iconsprite("editor/logic_difficulty.vmt") = logic_difficulty : "ZS: Adjusts the difficulty of the game."
 [
 	// Inputs
 	input setzombiespeedmultiplier(float)  : "Multiplier for Zombie speed."
 	input setzombiedamagemultiplier(float) : "Multiplier for Zombie damage."
 ]
 
-@PointClass base(Targetname) = logic_experience : "ZS: Adjusts the amount of XP players receive for a map."
+@PointClass base(Targetname) iconsprite("editor/logic_experience.vmt") = logic_experience : "ZS: Adjusts the amount of XP players receive for a map."
 [
 	// Keys
 	humanxpmulti(float) : "Human XP multiplier" : 1 : "Human XP multiplier."
@@ -761,7 +761,7 @@
 	input setzombiexpmulti(float) : "Set Multiplier for Zombie XP."
 ]
 
-@PointClass base(Targetname) = logic_pickups : "ZS: Allows you to control how much stuff people can pickup in the map. Only things placed by the mapper work with this system. Stuff from dead humans doesn't count."
+@PointClass base(Targetname) iconsprite("editor/logic_pickups.vmt") = logic_pickups : "ZS: Allows you to control how much stuff people can pickup in the map. Only things placed by the mapper work with this system. Stuff from dead humans doesn't count."
 [
 	// Keys
 	maxweaponpickups(integer)      : "Max Weapon Pickups"      : 5 : "How many weapons a player can pickup from the map."
@@ -780,7 +780,7 @@
 	input setweaponrequiredforammo(integer) : "If 1 then players must have a weapon that takes the ammo before being able to pick up an ammo box."
 ]
 
-@PointClass base(Targetname) = logic_classunlock  : "ZS: Allows you to control class unlocks."
+@PointClass base(Targetname) iconsprite("editor/logic_classunlock.vmt") = logic_classunlock  : "ZS: Allows you to control class unlocks."
 [
 	// Keys
 	class(string)          : "Class" : "zombie" : "Sets the name of the class to watch for any outputs."
@@ -1096,7 +1096,7 @@
 	]
 ]
 
-@PointClass base(Targetname, Parentname) sphere( range ) = point_worldhint : "ZS: Allows you to create 3D hints and information tags."
+@PointClass base(Targetname, Parentname) sphere( range ) iconsprite("editor/point_worldhint.vmt") = point_worldhint : "ZS: Allows you to create 3D hints and information tags."
 [
 	// Keys
 	hint(string)    : "Hint"    : " " : "The hint to display."
@@ -1131,7 +1131,7 @@
 	lifetime(integer) : "Lifetime" : 0 : "Overrides how long for this gib should live. 0 for never automatically remove."
 ]
 
-@PointClass base(Targetname) = logic_winlose : "ZS: When activated, this will end the round immediately, with the specified outcome."
+@PointClass base(Targetname) iconsprite("editor/logic_winlose.vmt") = logic_winlose : "ZS: When activated, this will end the round immediately, with the specified outcome."
 [
 	// Keys
 	endslowmo(choices)   : "Enable Slow Motion Effect?" : 1 : "Enables or disables the slow motion effect at the end of the round." =
@@ -1161,7 +1161,7 @@
 	output onlose(void)           : "Called when humans lose even if not by this entity."
 ]
 
-@PointClass base(Targetname) = logic_infliction : "ZS: Watches for the specified infliction level."
+@PointClass base(Targetname) iconsprite("editor/logic_infliction.vmt") = logic_infliction : "ZS: Watches for the specified infliction level."
 [
 	// Keys
 	infliction(float) : "Infliction" : "0.5" : "Defines infliction to watch for (float between 0.0 - 1.0)."
@@ -1199,7 +1199,7 @@
 	output OnWaveEnd(void)      : "Called when the specified wave has ended."
 ]
 
-@PointClass base(Targetname) = point_zsmessage : "ZS: Custom message that is displayed with the specified message."
+@PointClass base(Targetname) iconsprite("editor/point_zsmessage.vmt") = point_zsmessage : "ZS: Custom message that is displayed with the specified message."
 [
 	// Keys
 	team(choices)                    : "Team" : "all" : "Filter which team gets the message." =
@@ -1227,7 +1227,7 @@
 	input settextcolor(string)        : "Takes an 'R G B' string to change the color of the next message."
 ]
 
-@PointClass base(Targetname) = info_custommessage : "ZS: Allows several substrings to be concatenated together to form one message, attaches to messaging entities like game_text, point_worldhint and point_zsmessage"
+@PointClass base(Targetname) iconsprite("editor/info_custommessage.vmt") = info_custommessage : "ZS: Allows several substrings to be concatenated together to form one message, attaches to messaging entities like game_text, point_worldhint and point_zsmessage"
 [
 	// Keys
 	displayentity(target_destination) : "Target Messaging Entity" : "" : "The entity used to display the message, can be a targetname of a class game_text, point_worldhint or point_zsmessage"
@@ -1257,7 +1257,7 @@
 	output OnDisplayed(void)     : "Called when the message has successfully displayed."
 ]
 
-@PointClass base(Targetname) = logic_stripweapons : "ZS: Allows the map to strip all or specific weapons by classname"
+@PointClass base(Targetname) iconsprite("editor/logic_stripweapons.vmt") = logic_stripweapons : "ZS: Allows the map to strip all or specific weapons by classname"
 [
 	// Keys
 	keepfists(choices) : "Keep Fists" : 1 : "If yes, the stripallweapons input strips all weapons but fists" =
