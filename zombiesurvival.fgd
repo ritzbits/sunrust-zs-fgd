@@ -66,10 +66,20 @@
 	]
 	status(choices) : "Status Type" : "slow" : "The status to give humans inside the brush." =
 	[
-		"debuff_slow" 			: "Slow"
+		"debuff_anchor"         : "Anchor"
+		"debuff_boilingblood"   : "Boiling Blood"
 		"debuff_dimvision"      : "Dim Vision"
+		"debuff_slow" 			: "Slow"
 		"debuff_enfeeble"   	: "Enfeeble"
+		"debuff_exhausted"      : "Exhausted"
+		"debuff_frightened"     : "Frightened"
 		"debuff_frost"			: "Frost"
+		"debuff_gunk"           : "Gunk"
+		"debuff_knockdkown"     : "Knockdown"
+		"debuff_nightmare"      : "Nightmare"
+		"debuff_prey"           : "Prey"
+		"debuff_sickness"       : "Sickness"
+		"debuff_waste"          : "Waste"
 	]
 	linger(choices) : "Status Linger" : 0 : "Should the status linger after leaving the brush." =
 	[
@@ -1357,7 +1367,7 @@
 @PointClass base(Weapon) studio("models/items/healthkit.mdl")                   = weapon_zs_medicalkit         : "Ammo Type: Battery.\nFor healing yourself and others. For points of course." []
 @PointClass base(Weapon) studio("models/healthvial.mdl")                        = weapon_zs_mediccloudbomb     : "Explodes in to a cloud of healing gas. Heals 2.5 health per second, for 10 seconds." []
 @PointClass base(Weapon) studio("models/weapons/w_pistol.mdl")                  = weapon_zs_medicgun           : "Ammo Type: Medical Ammo.\nFires medical darts which can heal at a range." []
-@PointClass base(Weapon) studio("models/weapons/c_snip_scout.mdl")               = weapon_zs_medicrifle         : "Ammo Type: Medical Ammo.\nFires medical darts which can heal at a range.\nDarts can also debuff zombies." []
+@PointClass base(Weapon) studio("models/weapons/c_snip_scout.mdl")              = weapon_zs_medicrifle         : "Ammo Type: Medical Ammo.\nFires medical darts which can heal at a range.\nDarts can also debuff zombies." []
 @PointClass base(Weapon) studio("models/weapons/w_pistol.mdl")                  = weapon_zs_strengthshot       : "Ammo Type: Medical Ammo.\nFires performance enhancing darts which can increase a target's damage." []
 @PointClass base(Weapon) studio("models/weapons/w_sledgehammer.md")             = weapon_zs_megamasher         : "Craftable Weapon.\nRecipe: Explosive Barrel + Hammer" []
 @PointClass base(Weapon) studio("models/props_combine/combine_mine01.mdl")      = weapon_zs_messagebeacon      : "These display messages that can be seen by fellow human players." []
@@ -1415,7 +1425,6 @@
 @PointClass base(Weapon) studio("models/weapons/w_shotgun.mdl")                 = weapon_zs_tithonus           : "Ammo Type: Pulse.\nCharges a up shotgun blast of pulse projectiles." []
 @PointClass base(Weapon) studio("models/weapons/w_pist_fiveseven.mdl")          = weapon_zs_tempest            : "Ammo Type: Pistol.\nA burst firing pistol." []
 @PointClass base(Weapon) studio("models/weapons/w_smg1.mdl")                    = weapon_zs_tosser             : "Ammo Type: SMG.\nA basic SMG." []
-@PointClass base(Weapon) studio("models/props_c17/tv_monitor01.mdl")            = weapon_zs_tv                 : "Deployable TV.\nAllows remote observation of other areas without owning a camera viewer." []
 @PointClass base(Weapon) studio("models/weapons/w_smg_mac10.mdl")               = weapon_zs_uzi                : "Ammo Type: SMG.\nA higher powered, but still basic SMG." []
 @PointClass base(Weapon) studio("models/weapons/w_pist_usp.mdl")                = weapon_zs_waraxe             : "Craftable Weapon.\nRecipe: Battleaxe Handgun + Glock. " []
 @PointClass base(Weapon) studio("models/props_c17/tools_wrench01a.mdl")         = weapon_zs_wrench             : "This tool can be used to repair deployables as long as they were not damaged recently." []
@@ -1425,13 +1434,29 @@
 @PointClass base(Weapon) studio("models/weapons/w_alyx_gun.mdl")                = weapon_zs_z9000              : "Ammo Type: Pulse.\nDoesn't do as much damage as the other guns but slows targets on hit" []
 
 @PointClass base(Weapon) studio("models/props/cs_italy/bananna.mdl")               = weapon_zs_f_banana           : "Banana food item. Heals 10 HP." []
-@PointClass base(Weapon) studio("models/props_junk/garbage_milkcarton002a.mdl")    = weapon_zs_f_milk             : "Milk drink item. Heals 13 HP." []
-@PointClass base(Weapon) studio("models/props/cs_italy/orange.mdl")                = weapon_zs_f_orange           : "Banana food item. Heals 10 HP." []
-@PointClass base(Weapon) studio("models/props_junk/popcan01a.mdl")                 = weapon_zs_f_soda             : "Soda food item. Heals 5 HP." []
-@PointClass base(Weapon) studio("models/props_junk/garbage_takeoutcarton001a.mdl") = weapon_zs_f_takeout          : "Delicious Chinese Dim Sum takeout food item.\nHeals 17 HP." []
-@PointClass base(Weapon) studio("models/props/cs_office/water_bottle.mdl")         = weapon_zs_f_water            : "Water drink item. Heals 5 HP." []
-@PointClass base(Weapon) studio("models/props_junk/watermelon01_chunk02a.mdl")     = weapon_zs_f_watermelon       : "Watermelon food item. Heals 15 HP." []
-@PointClass base(Weapon) studio("models/props_junk/garbage_glassbottle003a.mdl")   = weapon_zs_f_beer             : "Beer food item. Heals 7 HP.\nGrants WARM buff for 22 seconds." []
+@PointClass base(Weapon) studio("models/props_junk/garbage_glassbottle003a.mdl")   = weapon_zs_f_beer             : "Beer drink item. Heals 7 HP, grants Warm status effect." []
+@PointClass base(Weapon) studio("models/props_junk/garbage_coffeemug001a.mdl")     = weapon_zs_f_beercup          : "Beer Cup drink item. Heals 15 HP, grants Warm status effect." []
 @PointClass base(Weapon) studio("models/food/burger.mdl")                          = weapon_zs_f_burger           : "Burger food item. Heals 20 HP." []
 @PointClass base(Weapon) studio("models/props_junk/garbage_metalcan001a.mdl")      = weapon_zs_f_cannedbeans      : "Canned beans food item. Heals 8 HP." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_f_chocolate        : "Heart Chocolate food item. Heals 20 HP." []
+@PointClass base(Weapon) studio("models/props_junk/garbage_coffeemug001a.mdl")     = weapon_zs_f_coffee           : "Coffee drink item. Heals 5 HP, grants Slipstream status effect." []
 @PointClass base(Weapon) studio("models/food/hotdog.mdl")                          = weapon_zs_f_hotdog           : "Hotdog food item. Heals 15 HP." []
+@PointClass base(Weapon) studio("models/props_junk/garbage_milkcarton002a.mdl")    = weapon_zs_f_milk             : "Milk drink item. Heals 13 HP." []
+@PointClass base(Weapon) studio("models/props_junk/popcan01a.mdl")                 = weapon_zs_f_soda             : "Soda food item. Heals 5 HP." []
+@PointClass base(Weapon) studio("models/gibs/antlion_gib_large_3.mdl")             = weapon_zs_f_offal            : "Offal food item gained from Great Knife. Heals 10 HP." []
+@PointClass base(Weapon) studio("models/props/cs_italy/orange.mdl")                = weapon_zs_f_orange           : "Orange food item. Heals 10 HP." []
+@PointClass base(Weapon) studio("models/props_junk/garbage_plasticbottle003a.mdl") = weapon_zs_f_orangejuice      : "Orange juice drink item. Heals 10 HP, grants Agility status effect." []
+@PointClass base(Weapon) studio("models/props_junk/garbage_takeoutcarton001a.mdl") = weapon_zs_f_takeout          : "Delicious Chinese Dim Sum takeout food item.\nHeals 17 HP." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_f_tuna             : "Tuna food item. Heals 20 HP." []
+@PointClass base(Weapon) studio("models/props/cs_office/water_bottle.mdl")         = weapon_zs_f_water            : "Water drink item. Heals 5 HP, grants Cleanse status effect." []
+@PointClass base(Weapon) studio("models/props_junk/watermelon01_chunk02a.mdl")     = weapon_zs_f_watermelon       : "Watermelon food item. Heals 15 HP." []
+
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_flask_conductive   : "Flask of Conduction. Causes zombies to become shocked, causing them take damage and become pulse slowed." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_flask_hinder       : "Flask of Hindsering. Inflicts hinder on zombies you throw it at." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_flask_oil          : "Flask of Oil. Zombies in radius when doused with oil, become ignited if they take explosive damage." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_flask_sapping      : "Flask of Sapping. Inflicts sapping on zombies you throw it at." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_flask_soften       : "Flask of Softening. Inflicts softening on zombies you throw it at." []
+
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_con_adrenaline     : "Adrenaline consumable. When injected, gives you the ability to take a few more hits, blood armor and speed." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_con_blitz          : "Blitz consumable. When injected, briefly grants strength and agility at +10% effectiveness, and a random stacking offensive status at high intensity and duration.\nBlocks refreshing of granted stacking offensive statuses for their duration." []
+@PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                    = weapon_zs_con_ether          : "Ether consumable. When injected, grants you the ability to hide your aura, speed and slipstream." []
