@@ -553,7 +553,7 @@
 	output OnUnCorrupt(void)    :   "fired when the sigil is uncorrupted."
 ]
 
-@PointClass base(Targetname) iconsprite("editor/logic_noskills.vmt") = info_noskills : "ZS: Disables the use of ZS skills." []
+@PointClass base(Targetname) iconsprite("editor/info_noskills.vmt") = info_noskills : "ZS: Disables the use of ZS skills." []
 
 @PointClass base(Targetname) iconsprite("editor/logic_beats.vmt") = logic_beats  : "ZS: Allows you to turn beats (the ambient music) on or off."
 [
