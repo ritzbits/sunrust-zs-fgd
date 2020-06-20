@@ -566,13 +566,13 @@
 
 @PointClass base(Targetname) iconsprite("editor/info_noskills.vmt") = info_noskills : "ZS: Disables the use of ZS skills." []
 
-@PointClass base(Targetname) iconsprite("editor/info_sigilgroup.vmt") = info_sigilgroup  : "ZS: Controls grouping of sigils. Groups are defined by matching group names on info_sigilnodes."
+@PointClass base(Targetname) iconsprite("editor/info_sigilgroup.vmt") = info_sigilgroup  : "ZS: Controls grouping of sigils. Groups are defined by info_sigilnodes which have the same Sigil Group Names."
 [
 	// Keys
 	sigilgrouping(choices) : "Sigil Grouping" : 0 : "The method to group sigils by. "+
-		"Disabled - Default behavior. "+
-		"Enabled, Inclusive - Sigils are picked WITHIN one randomly picked group. "+
-		"Enabled, Exclusive - One random sigil from each is picked to determine which sigils spawn." =
+		"Disabled - Default behavior.\n "+
+		"Enabled, Inclusive - Sigils are picked WITHIN one randomly picked group. Each group should have at least 3 sigils for the default sigil count.\n "+
+		"Enabled, Exclusive - One random sigil from each is picked to determine which sigils spawn. There must be at least 3 groups for the default sigil count. " =
 	[
 		0 : "Disabled"
 		1 : "Enabled, Inclusive"
