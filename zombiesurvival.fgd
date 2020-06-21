@@ -757,6 +757,11 @@
 [
 	// Keys
 	startingworth(integer) : "Starting Worth" : 100 : "The amount of Worth to start with. Use 0 to disable Worth."
+	forceskills(choices)	: "Force Skills" : 0 : "If yes, skills are applied immediately upon join instead of upon checkout. Useful for when Worth is disabled." =
+		[
+			0 : "No"
+			1 : "Yes"
+		]
 
 	// Inputs
 	input setstartingworth(integer) : "Sets the amount of worth to start with."
