@@ -550,6 +550,11 @@
 		1 : "Yes"
 		0 : "No"
 	]
+	nocrate(choices) : "No Supply Crate" : 0 : "Disables spawning a crate on this entity in Point Save mode." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
 	sigilgroupname(string) : "Sigil Group Name" :  : "Name of the group to assign this sigil to, for use with info_sigilgroup."
 
 	// Inputs
@@ -757,11 +762,6 @@
 [
 	// Keys
 	startingworth(integer) : "Starting Worth" : 100 : "The amount of Worth to start with. Use 0 to disable Worth."
-	forceskills(choices)	: "Force Skills" : 0 : "If yes, skills are applied immediately upon join instead of upon checkout. Useful for when Worth is disabled." =
-		[
-			0 : "No"
-			1 : "Yes"
-		]
 
 	// Inputs
 	input setstartingworth(integer) : "Sets the amount of worth to start with."
