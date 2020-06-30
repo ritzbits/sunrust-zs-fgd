@@ -401,6 +401,9 @@
 	input setonetime(integer)           : "Set One Time keyvalue. <boolean>"
 	input setinstantchange(integer)     : "Set Change Instantly keyvalue. <boolean>"
 	input setonlywhenclass(string)      : "Set Only When Class keyvalue."
+	
+	// Outputs
+	output OnClassChanged(void)			:   "Fired when a zombie's class has been changed by this entity."
 ]
 
 @SolidClass base(Targetname) = trigger_bossclass : "ZS: A zombie that touches this brush"
