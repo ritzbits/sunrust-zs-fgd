@@ -92,6 +92,11 @@
 	input enable(void)   : "Enable the entity."
 	input disable(void)  : "Disable the entity."
 	input seton(integer) : "Enable or Disable the entity."
+	
+	// Outputs
+	output OnGiveStatusPlayer(void)			:   "Fired when a status is given to a player."
+	output OnEnterPlayer(void)				:   "Fired when a player enters the brush volume."
+	output OnLeavePlayer(void)				:   "Fired when a player leaves the brush volume."
 ]
 
 @SolidClass base(Targetname) = trigger_zombieclass : "ZS: You can directly control the changing of classes with this."
