@@ -638,58 +638,58 @@
 
 @PointClass base(Targetname) iconsprite("editor/logic_gamerules.vmt") = logic_gamerules  : "ZS: Allows you to control game rules."
 [
-	// Keys
-	disablefreshdead(choices) : "Disable Fresh Dead" : 0 : "Prevents humans from turning into fresh dead on death." =
+	// Keys - Defaults were removed so that they don't become 'stuck' in the map (in case the defaults get stale from ZS updates)
+	disablefreshdead(choices) : "Disable Fresh Dead" : : "Prevents humans from turning into fresh dead on death." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	nosigils(choices) : "Disable Sigils" : 0 : "Prevents sigils from spawning. Humans win at the end of the last wave or when logic_winlose is triggered." =
+	nosigils(choices) : "Disable Sigils" : : "Prevents sigils from spawning. Humans win at the end of the last wave or when logic_winlose is triggered." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	noskills(choices) : "Disable Skills" : 0 : "Disables the use of skills." =
+	noskills(choices) : "Disable Skills" : : "Disables the use of skills." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	nospawnonsigils(choices) : "Disable spawning on Sigils" : 0 : "Disable players spawning on sigils. Humans will instead spawn on info_player_human." =
+	nospawnonsigils(choices) : "Disable spawning on Sigils" : : "Disable players spawning on sigils. Humans will instead spawn on info_player_human." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	nometagame(choices) : "Disable Metagame" : 0 : "Disables zombie buffs, zombie class uplifts and great evils from spawning." =
+	nometagame(choices) : "Disable Metagame" : : "Disables zombie buffs, zombie class uplifts and great evils from spawning." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	noescapedoors(choices) : "Disable Escape Doors" : 0 : "Prevents escape doors from appearing." =
+	noescapedoors(choices) : "Disable Escape Doors" : : "Prevents escape doors from appearing." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	nozombiefalldmg(choices) : "Disable Zombie Fall Damage" : 0 : "Prevents zombies from taking fall damage." =
+	nozombiefalldmg(choices) : "Disable Zombie Fall Damage" : : "Prevents zombies from taking fall damage." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	waveonesigils(choices) : "Wave One Sigils" : 0 : "Set sigils to spawn on the start of wave 1, instead of the start of the map." =
+	waveonesigils(choices) : "Wave One Sigils" : : "Set sigils to spawn on the start of wave 1, instead of the start of the map." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
-	globalsigilname(string)  : "Global Sigil Name" : "Sigil" : "Sets the global highlight name of all sigils."
-	mapreplays(float)  : "Round Limit" : 2 : "Allows you to override the number of replays. If set to 1 the map will not replay after the first round. If set to 0 the map will allow unlimited restarts up until the timelimit runs out (default 15 minutes)."
-	mapreplaytime(float) : "Replay Time Override" : 900 : "Overrides the timelimit for replays. The default is 15 minutes (900 seconds) for non-objective maps."
-	nailhpmul(float) : "Multiplier for Barricade Health" : 1 : "Global multiplier for the amount of barricade health props have when nailed."
-	nestdistancemul(float)  : "Multiplier for Nest Distance" : 1 : "Adjust the distance from humans required to build nests. Decrease to make it easier to build nests closer to barricade spots."
-	nestverticalskewmul(float) : "Multiplier for Nest Vertical Skew" : 1 : "Adjust vertical skew distance for nests. Increase to make it easier to create nests on roofs, or on lower or upper floors of multi-story buildings. Better to leave this at 1."
-	zombiesigildamagemul(float) : "Multiplier for Zombie Sigil Damage" : 1 : "Multiplier for the amount of damage sigils take from zombies."
-	humansigildamagemul(float) : "Multiplier for Human Sigil Damage" : 1 : "Multiplier for the amount of damage sigils take from humans."
-	sigilcount(float) : "Sigil Count" : 3 : "Allows you to override the number of sigils that spawn."
-	startzombiepercent(float) : "Starting Infliction" : "0.14" : "Allows you to override the percentage of starting zombies. If set to 0.14 then 14 percent of players will become zombies at the start of a round."
-	demibossbuildfactor(float) : "Demiboss Build Factor" : "1" : "Scales demiboss build up on a particular map. 1 is 100%. 2 is 200%. 0.5 is 50% etc."
+	globalsigilname(string)  : "Global Sigil Name" : : "Sets the global highlight name of all sigils. Default: 'Sigil'"
+	mapreplays(float)  : "Round Limit" : : "Allows you to override the number of replays. If set to 1 the map will not replay after the first round. If set to 0 the map will allow unlimited restarts up until the timelimit runs out (default 15 minutes). Default: 2"
+	mapreplaytime(float) : "Replay Time Override" : : "Overrides the timelimit for replays. Default: 900 (15 minutes)"
+	nailhpmul(float) : "Multiplier for Barricade Health" : : "Global multiplier for the amount of barricade health props have when nailed. Default: 1"
+	nestdistancemul(float)  : "Multiplier for Nest Distance" : : "Adjust the distance from humans required to build nests. Decrease to make it easier to build nests closer to barricade spots. Default: 1"
+	nestverticalskewmul(float) : "Multiplier for Nest Vertical Skew" : : "Adjust vertical skew distance for nests. Increase to make it easier to create nests on roofs, or on lower or upper floors of multi-story buildings. This should be changed as a last resort. Default: 1"
+	zombiesigildamagemul(float) : "Multiplier for Zombie Sigil Damage" : : "Multiplier for the amount of damage sigils take from zombies. Default: 1"
+	humansigildamagemul(float) : "Multiplier for Human Sigil Damage" : : "Multiplier for the amount of damage sigils take from humans. Default: 1"
+	sigilcount(float) : "Sigil Count" : : "Allows you to override the number of sigils that spawn. Default: 3"
+	startzombiepercent(float) : "Starting Infliction" : : "Allows you to override the percentage of starting zombies. If set to 0.14 then 14 percent of players will become zombies at the start of a round. You shouldn't need to change this. Default: 0.14 (may vary due to metagame)"
+	demibossbuildfactor(float) : "Demiboss Build Factor" : : "Scales demiboss build up on a particular map. 1 is 100%. 2 is 200%. 0.5 is 50% etc. Default: 1"
 ]
 
 @PointClass base(Targetname,Origin) iconsprite("particles/smokey") sphere( radius ) = zombiegasses  : "ZS: Manually place a point for the zombies' noxious gases."
