@@ -92,7 +92,7 @@
 	input enable(void)   : "Enable the entity."
 	input disable(void)  : "Disable the entity."
 	input seton(integer) : "Enable or Disable the entity."
-	
+
 	// Outputs
 	output OnGiveStatusPlayer(void)			:   "Fired when a status is given to a player."
 	output OnEnterPlayer(void)				:   "Fired when a player enters the brush volume."
@@ -406,7 +406,7 @@
 	input setonetime(integer)           : "Set One Time keyvalue. <boolean>"
 	input setinstantchange(integer)     : "Set Change Instantly keyvalue. <boolean>"
 	input setonlywhenclass(string)      : "Set Only When Class keyvalue."
-	
+
 	// Outputs
 	output OnClassChanged(void)			:   "Fired when a zombie's class has been changed by this entity."
 ]
@@ -453,7 +453,7 @@
 		"wil o' wisp"        : "Wil O' Wisp"
 		"cool wisp"          : "Cool Wisp"
 	]
-	demiclass(choices)        : "Demiboss Class" : "Darkmare" : "Set the demiboss class for players to spawn as." = 
+	demiclass(choices)        : "Demiboss Class" : "Darkmare" : "Set the demiboss class for players to spawn as." =
 	[
 		""                   : "Disabled"
 		"darkmare"           : "Darkmare"
@@ -558,12 +558,13 @@
 		1 : "Yes"
 		0 : "No"
 	]
-	nocrate(choices) : "No Supply Crate" : 0 : "Disables spawning a crate on this entity in Point Save mode." =
+	spawnrestriction(choices) : "Spawn Restriction" : 0 : "Sets whether this node is only used for supply crates (PointSave) or sigils (non-PointSave)." =
 	[
-		1 : "Yes"
-		0 : "No"
+		0 : "None"
+		1 : "Sigil Only"
+		2 : "Supply Crate Only"
 	]
-	sigilgroupname(string) : "Sigil Group Name" :  : "Name of the group to assign this sigil to, for use with info_sigilgroup."
+	sigilgroupname(string) : "Sigil Group Name" :  : "Name of the group to assign this sigil to, for use with info_sigilgroup. Sigils without a group name are automatically assigned to a 'Default' group."
 
 	// Inputs
 	input enableteleport(void)  : "Enables teleporting to this sigil."
@@ -602,11 +603,27 @@
 		0 : "No"
 	]
 
+	playwavestartsound(choices) : "Play Wave Start Sound" : 1 : "Allows the gamemode to handle playing sounds on wave start" =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+
+	playwaveendsound(choices) : "Play Wave End Sound" : 1 : "Allows the gamemode to handle playing sounds on wave end" =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+
 	// Inputs
 	input enable(void)  : "Enables beats."
 	input disable(void) : "Disables beats."
-]
 
+	input EnableWaveStartSound(void) : "Enables wave start sound."
+	input DisableWaveStartSound(void) : "Disables wave start sound."
+	input EnableWaveEndSound(void) : "Enables wave end sound."
+	input DisableWaveEndSound(void) : "Disables wave end sound."
+]
 
 @PointClass base(Targetname) iconsprite("editor/logic_nobuy.vmt") = logic_nobuy : "ZS: Allows you to disable purchases from the points shop (arsenal crate/pack and sigil only)."
 [
@@ -645,6 +662,11 @@
 		0 : "No"
 	]
 	nosigils(choices) : "Disable Sigils" : : "Prevents sigils from spawning. Humans win at the end of the last wave or when logic_winlose is triggered." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+	nobanishedsigil(choices) : "Disable Banished Sigil" : : "Prevents the banished sigil from spawning automatically." =
 	[
 		1 : "Yes"
 		0 : "No"
@@ -694,8 +716,17 @@
 
 @PointClass base(Targetname,Origin) iconsprite("particles/smokey") sphere( radius ) = zombiegasses  : "ZS: Manually place a point for the zombies' noxious gases."
 [
+	spawnflags(flags) =
+	[
+		1 : "Start Disabled" : 0
+	]
+
 	// Keys
 	radius(integer) : "Radius" : 250 : "Radius that this can damage humans/heal zombies."
+
+	// Inputs
+	input enable(void)	: "Enables this entity."
+	input disable(void)	: "Disables this entity."
 ]
 
 @PointClass base(Targetname) iconsprite("editor/logic_pickupdrop.vmt") = logic_pickupdrop : "ZS: Controls events when players pickup or drop things."
@@ -1215,14 +1246,14 @@
 	// Keys
 	wave(choices) : "Wave" : 1 : "Any On* outputs will watch for this wave. Use -1 for all waves." =
 		[
-		-1 : "All Waves" // 
-		1 : "Wave One" // 
-		2 : "Wave Two" // 
-		3 : "Wave Three" // 
-		4 : "Wave Four" // 
-		5 : "Wave Five" // 
-		6 : "Wave Six" // 
-		]	
+		-1 : "All Waves" //
+		1 : "Wave One" //
+		2 : "Wave Two" //
+		3 : "Wave Three" //
+		4 : "Wave Four" //
+		5 : "Wave Five" //
+		6 : "Wave Six" //
+		]
 
 	// Inputs
 	input AdvanceWave(void)     : "Advances to the next wave and sets the wave to active."
