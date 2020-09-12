@@ -571,6 +571,7 @@
 	input disableteleport(void) : "Disables teleporting to this sigil."
 	input corrupt(void) 	    : "Corrupts the sigil."
 	input uncorrupt(void)       : "Uncorrupts the sigil."
+	input banish(void)			: "Banishes the sigil."
 
 	// Outputs
 	output OnSigilSpawn(void)   :   "fired when a sigil spawns in this location."
