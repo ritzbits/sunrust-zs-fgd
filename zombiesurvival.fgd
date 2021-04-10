@@ -581,7 +581,7 @@
 
 @PointClass base(Targetname) iconsprite("editor/info_noskills.vmt") = info_noskills : "ZS: Disables the use of ZS skills." []
 
-@PointClass base(Targetname) iconsprite("editor/info_sigilgroup.vmt") = info_sigilgroup  : "ZS: Controls grouping of sigils. Groups are defined by info_sigilnodes which have the same Sigil Group Names."
+@PointClass base(Targetname) iconsprite("editor/info_sigilgroup.vmt") = info_sigilgroup  : "ZS: Controls grouping of sigils. Groups are defined by info_sigilnodes which have the same Sigil Group Names keys."
 [
 	// Keys
 	sigilgrouping(choices) : "Sigil Grouping" : 0 : "The method to group sigils by. "+
@@ -615,6 +615,12 @@
 		1 : "Yes"
 		0 : "No"
 	]
+	
+	disableannoucner(choices) : "Disable announcer" : 0 : "Disable wave start / end announcement lines from playing" =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
 
 	// Inputs
 	input enable(void)  : "Enables beats."
@@ -624,6 +630,8 @@
 	input DisableWaveStartSound(void) : "Disables wave start sound."
 	input EnableWaveEndSound(void) : "Enables wave end sound."
 	input DisableWaveEndSound(void) : "Disables wave end sound."
+	input EnableAnnouncer(void)		: "Enables wave announcer."
+	input DisableAnnouncer(void)	: "Disables wave announcer."
 ]
 
 @PointClass base(Targetname) iconsprite("editor/logic_nobuy.vmt") = logic_nobuy : "ZS: Allows you to disable purchases from the points shop (arsenal crate/pack and sigil only)."
@@ -1099,6 +1107,25 @@
 			"weapon_zs_zeus"               : "Zeus Voltaic Crossbow"
 			"weapon_zs_z9000"              : "Z9000 Pulse Pistol"
 		]
+	weaponbranch(choices)			: "Weapon Variant" : 0 : "Which variant of the weapon to spawn (if available). Usually based on position in the Remantler UI. Ask a dev for real IDs." =
+		[
+			0 : "None"
+			1 : "Branch 1"
+			2 : "Branch 2"
+			3 : "Branch 3"
+			4 : "Branch 4"
+			5 : "Branch 5"
+			6 : "Branch 6"
+			7 : "Branch 7"
+			8 : "Branch 8"
+		]
+	weaponquality(choices)			: "Weapon Quality"	: 0 : "What quality of weapon to use." =
+		[
+			0 : "Standard"
+			1 : "+1 (Sturdy)"
+			2 : "+2 (Honed)"
+			3 : "+3 (Perfected)"
+		]
 	empty(choices)             : "Empty" : 0 : "Set to empty the weapon of any default ammo" =
 		[
 			0 : "No"
@@ -1114,7 +1141,7 @@
 			0 : "No"
 			1 : "Yes"
 		]
-	ignoreuse(choices)         : "Ignore Use" : 0 : "Set to disable being able to pickup via use key" =
+	ignoreuse(choices)         : "Ignore Use" : 0 : "Set to disable being able to pickup via use key." =
 		[
 			0 : "No"
 			1 : "Yes"
