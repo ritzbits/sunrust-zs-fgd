@@ -21,6 +21,7 @@
 	"Sigil Entities"
 	[
 		"info_sigilnode"
+		"info_zsnode"
 	]
 	"Spawn Entities"
 	[
@@ -545,7 +546,7 @@
 	]
 ]
 
-@PointClass base(Targetname, Angles) studio("models/props_wasteland/medbridge_post01.mdl") = info_sigilnode : "ZS: Manual Placement of Sigils ONLY when dynamic placement isn't enough."
+@PointClass base(Targetname, Angles) studio("models/props_wasteland/medbridge_post01.mdl") = info_sigilnode : "ZS: Manual Placement of Sigils."
 [
 	// Keys
 	forcespawn(choices) : "Force Spawn" : 0 : "Forces this sigil to always spawn" =
@@ -577,6 +578,25 @@
 	output OnSigilSpawn(void)   :   "fired when a sigil spawns in this location."
 	output OnCorrupt(void) 	    :   "fired when the sigil is corrupted."
 	output OnUnCorrupt(void)    :   "fired when the sigil is uncorrupted."
+]
+
+@PointClass base(Targetname, Angles) studio("models/props_wasteland/medbridge_post01.mdl") = info_zsnode : "ZS: Manual placement of nodes such as locations where banished sigil, nydus worm, or drops spawn."
+[
+	spawnflags(flags) =
+	[
+		1 : "Sigils - NOTE: Use info_sigilnode instead for more options" : 0
+		2 : "Drops" : 0
+		4 : "Capture Points" : 0
+		8 : "Banished Sigils" : 0
+		16: "Nydus Worms" : 0
+		32: "Sigil Rifts": 0
+	]
+
+	// Keys
+
+
+	// Outputs
+	output OnNodeUsed(void)   :   "fired when a ZS objective spawns in this location."
 ]
 
 @PointClass base(Targetname) iconsprite("editor/info_noskills.vmt") = info_noskills : "ZS: Disables the use of ZS skills." []
@@ -615,7 +635,7 @@
 		1 : "Yes"
 		0 : "No"
 	]
-	
+
 	disableannoucner(choices) : "Disable announcer" : 0 : "Disable wave start / end announcement lines from playing" =
 	[
 		1 : "Yes"
