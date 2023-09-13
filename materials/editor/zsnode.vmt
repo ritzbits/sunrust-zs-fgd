@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "editor/zsnode"
+	"$translucent" "1"
+}

@@ -580,7 +580,7 @@
 	output OnUnCorrupt(void)    :   "fired when the sigil is uncorrupted."
 ]
 
-@PointClass base(Targetname, Angles) studio("models/props_wasteland/medbridge_post01.mdl") = info_zsnode : "ZS: Manual placement of nodes such as locations where banished sigil, nydus worm, or drops spawn."
+@PointClass base(Targetname, Angles) studio("models/editor/zsnode.mdl") = info_zsnode : "ZS: Manual placement of nodes such as locations where banished sigil, nydus worm, or drops spawn."
 [
 	spawnflags(flags) =
 	[
