@@ -102,6 +102,11 @@
 
 @SolidClass base(Targetname) = trigger_zombieclass : "ZS: You can directly control the changing of classes with this."
 [
+	spawnflags(flags) =
+	[
+		1 : "Bots Only" : 0
+	]
+
 	// Keys
 	enabled(choices)         : "Enabled" : 0 : "Enable the brush entity." =
 	[
@@ -414,6 +419,11 @@
 
 @SolidClass base(Targetname) = trigger_bossclass : "ZS: A zombie that touches this brush"
 [
+	spawnflags(flags) =
+	[
+		1 : "Bots Only" : 0
+	]
+
 	// Keys
 	enabled(choices)       : "Enabled" : 0 : "Enable the brush entity." =
 	[
