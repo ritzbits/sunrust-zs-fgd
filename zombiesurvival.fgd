@@ -1404,7 +1404,16 @@
 // Gamemode - Weapons + Items /////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
-@PointClass base(Weapon)                                                        = weapon_map_base              : "Used for creating parentable map made weapons" []
+@PointClass base(Weapon)                                                        = weapon_map_base              : "Used for creating parentable map made weapons"
+[
+	// Keys
+	team(choices)                    : "Team" : "4" : "Filter which team can pick up the weapon." =
+	[
+		"0" : "All"
+		"3"	: "Zombies"
+		"4"	: "Humans"
+	]
+]
 
 @PointClass base(Weapon) studio("models/weapons/w_rif_ak47.mdl")                = weapon_zs_akbar              : "Ammo Type: Assault Rifle.\nA low clip size assault rifle." []
 @PointClass base(Weapon) studio("models/weapons/w_rif_sg552.mdl")               = weapon_zs_amigo              : "Ammo Type: Assault Rifle.\nFill in the missing assault rifle role for the second tier." []
