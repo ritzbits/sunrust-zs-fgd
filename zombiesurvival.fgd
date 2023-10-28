@@ -102,6 +102,11 @@
 
 @SolidClass base(Targetname) = trigger_zombieclass : "ZS: You can directly control the changing of classes with this."
 [
+	spawnflags(flags) =
+	[
+		1 : "Bots Only" : 0
+	]
+
 	// Keys
 	enabled(choices)         : "Enabled" : 0 : "Enable the brush entity." =
 	[
@@ -414,6 +419,11 @@
 
 @SolidClass base(Targetname) = trigger_bossclass : "ZS: A zombie that touches this brush"
 [
+	spawnflags(flags) =
+	[
+		1 : "Bots Only" : 0
+	]
+
 	// Keys
 	enabled(choices)       : "Enabled" : 0 : "Enable the brush entity." =
 	[
@@ -1394,7 +1404,18 @@
 // Gamemode - Weapons + Items /////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////
 
-@PointClass base(Weapon)                                                        = weapon_map_base              : "Used for creating parentable map made weapons" []
+@PointClass base(Weapon)                                                        = weapon_map_base              : "Used for creating parentable map made weapons"
+[
+	// Keys
+	team(choices)                    : "Team" : "4" : "Filter which team can pick up the weapon." =
+	[
+		"0" : "All"
+		"3" : "Zombies"
+		"4" : "Humans"
+	]
+
+	output OnDropped(void)			:   "Fired when the user drops the weapon."
+]
 
 @PointClass base(Weapon) studio("models/weapons/w_rif_ak47.mdl")                = weapon_zs_akbar              : "Ammo Type: Assault Rifle.\nA low clip size assault rifle." []
 @PointClass base(Weapon) studio("models/weapons/w_rif_sg552.mdl")               = weapon_zs_amigo              : "Ammo Type: Assault Rifle.\nFill in the missing assault rifle role for the second tier." []
