@@ -1413,6 +1413,8 @@
 		"3" : "Zombies"
 		"4" : "Humans"
 	]
+
+	output OnDropped(void)			:   "Fired when the user drops the weapon."
 ]
 
 @PointClass base(Weapon) studio("models/weapons/w_rif_ak47.mdl")                = weapon_zs_akbar              : "Ammo Type: Assault Rifle.\nA low clip size assault rifle." []
