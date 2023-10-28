@@ -1410,8 +1410,8 @@
 	team(choices)                    : "Team" : "4" : "Filter which team can pick up the weapon." =
 	[
 		"0" : "All"
-		"3"	: "Zombies"
-		"4"	: "Humans"
+		"3" : "Zombies"
+		"4" : "Humans"
 	]
 ]
 
