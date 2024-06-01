@@ -81,6 +81,7 @@
 		"debuff_prey"           : "Prey"
 		"debuff_sickness"       : "Sickness"
 		"debuff_waste"          : "Waste"
+		"buff_stack_reaper"		: "Reaper (Stack)"
 	]
 	linger(choices) : "Status Linger" : 0 : "Should the status linger after leaving the brush." =
 	[
@@ -88,11 +89,19 @@
 		0 : "No"
 	]
 	duration(integer) : "Duration" : 5 : "How long the status lasts for."
+	team(choices) : "Team" : "4" : "Filter which team can get statuses." =
+	[
+		"3" : "Zombies"
+		"4" : "Humans"
+	]
+	stacks(integer) : "Stacks" : 0 : "For stacking statuses like Reaper combat stacks, how many stacks to give. Does nothing on regular statuses."
+	shouldsetstacks(boolean) : "Should Set Stacks" : 1 : "If true, stack statuses will be SET to the amount defined in Stacks instead of added."
 
 	// Inputs
 	input enable(void)   : "Enable the entity."
 	input disable(void)  : "Disable the entity."
 	input seton(integer) : "Enable or Disable the entity."
+	input trigger(void)	 : "Fires the entity, useful if triggered by a proxy trigger entity."
 
 	// Outputs
 	output OnGiveStatusPlayer(void)			:   "Fired when a status is given to a player."
@@ -740,6 +749,11 @@
 		1 : "Yes"
 		0 : "No"
 	]
+	disablenests(choices) : "Disable Nests" : : "Set sigils to spawn on the start of wave 1, instead of the start of the map." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
 	globalsigilname(string)  : "Global Sigil Name" : : "Sets the global highlight name of all sigils. Default: 'Sigil'"
 	mapreplays(float)  : "Round Limit" : : "Allows you to override the number of replays. If set to 1 the map will not replay after the first round. If set to 0 the map will allow unlimited restarts up until the timelimit runs out (default 15 minutes). Default: 2"
 	mapreplaytime(float) : "Replay Time Override" : : "Overrides the timelimit for replays. Default: 900 (15 minutes)"
@@ -785,6 +799,25 @@
 ]
 
 @PointClass base(Targetname) iconsprite("editor/logic_points.vmt") = logic_points : "ZS: Allows you to control and call outputs based on points."
+[
+	// Inputs
+	input addtoactivator(float)           : "Adds <number> to the activator."
+	input addtocaller(float)              : "Adds <number> to the caller."
+	input takefromactivator(integer)      : "Takes <number> from the activator."
+	input takefromcaller(integer)         : "Takes <number> from the caller."
+	input setactivatoramount(integer)     : "Sets the amount that activator has to <number>."
+	input setcalleramount(integer)        : "Sets the amount that caller has to <number>."
+	input callifactivatorhave(integer)    : "If the activator has this amount then OnConditionPassed is thrown, otherwise OnConditionFailed."
+	input callifactivatornothave(integer) : "If the activator does bot have this amount then OnConditionPassed is thrown, otherwise OnConditionFailed."
+	input callifcallerhave(integer)       : "If the caller has this amount then OnConditionPassed is thrown, otherwise OnConditionFailed."
+	input callifcallernothave(integer)    : "If the call does not have this amount then OnConditionPassed is thrown, otherwise OnConditionFailed."
+
+	// Outputs
+	output OnConditionPassed(void)        : "Thrown by ourselves when a condition is passed. The activator is always the player in question. The arguments are the amount that was checked against."
+	output OnConditionFailed(void)        : "Thrown by ourselves when a condition is failed. The activator is always the player in question. The arguments are the amount that was checked against."
+]
+
+@PointClass base(Targetname) iconsprite("editor/logic_points.vmt") = logic_darkessence : "ZS: Allows you to control and call outputs based on Dark Essence."
 [
 	// Inputs
 	input addtoactivator(float)           : "Adds <number> to the activator."
@@ -908,6 +941,7 @@
 	input unlockclass(string)       : "Forces a class to be unlocked."
 	input lockclass(string)         : "Forces a class to be locked."
 	input setbossesenabled(integer) : "Enables or disables boss zombies."
+	input unlockwaveclasses(integer) : "Unlocks all classes that would normally be unlocked on the given wave."
 
 	// Outputs
 	output OnClassUnlocked(void)    : "Called when the class we're watching's class is unlocked by the game. This output isn't called if the class is unlocked by any logic_classunlock entities, only by the game."
@@ -1305,6 +1339,7 @@
 	wave(choices) : "Wave" : 1 : "Any On* outputs will watch for this wave. Use -1 for all waves." =
 		[
 		-1 : "All Waves" //
+		0 : "Wave Zero (Waiting for Players)" //
 		1 : "Wave One" //
 		2 : "Wave Two" //
 		3 : "Wave Three" //
@@ -1312,6 +1347,8 @@
 		5 : "Wave Five" //
 		6 : "Wave Six" //
 		]
+
+	timeleft(float) : "Wave Time Left" : 0 : "If non-zero, will fire OnWaveTimeRemaining when this amount of time remains in the wave, in seconds."
 
 	// Inputs
 	input AdvanceWave(void)     : "Advances to the next wave and sets the wave to active."
@@ -1325,6 +1362,7 @@
 	// Outputs
 	output OnWaveStart(void)    : "Called when the specified wave has started."
 	output OnWaveEnd(void)      : "Called when the specified wave has ended."
+	output OnWaveTimeRemaining(void)	: "Called when the specificed time is remaining in the wave."
 ]
 
 @PointClass base(Targetname) iconsprite("editor/point_zsmessage.vmt") = point_zsmessage : "ZS: Custom message that is displayed with the specified message."
