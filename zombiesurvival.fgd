@@ -8,6 +8,29 @@
 
 @AutoVisGroup = "Zombie Survival"
 [
+        "Logic Entities"
+        [
+                "logic_points"
+                "info_noskills"
+                "logic_beats"
+                "logic_stripweapons"
+                "point_worldhint"
+                "prop_weapon"
+                "prop_ammo"
+                "prop_nail"
+                "logic_dynamicspawning"
+                "logic_gamerules"
+                "logic_waves"
+                "logic_pickupdrop"
+                "logic_darkessence"
+                "logic_startingloadout"
+                "logic_brains"
+                "logic_worth"
+                "logic_points"
+                "logic_barricade"
+                "logic_classunlock"
+                "logic_experience"
+        ]
 	"Brush Entities"
 	[
 		"func_noair"
@@ -798,7 +821,7 @@
 
 ]
 
-@PointClass base(Targetname) iconsprite("editor/logic_points.vmt") = logic_points : "ZS: Allows you to control and call outputs based on points."
+@PointClass base(Targetname) iconsprite("editor/logic_points.vmt") =  : "ZS: Allows you to control and call outputs based on points."
 [
 	// Inputs
 	input addtoactivator(float)           : "Adds <number> to the activator."
