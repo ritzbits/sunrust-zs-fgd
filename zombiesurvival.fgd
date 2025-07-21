@@ -52,6 +52,7 @@
 		"info_player_undead"
 		"info_player_zombie_boss"
 		"info_player_redeemed"
+		"info_player_zombie_bot"
 	]
 	"Zombie Gas"
 	[
@@ -628,6 +629,7 @@
 @PointClass base(PlayerClass, Angles, ZSSpawn) studio("models/zombie/classic.mdl") = info_player_zombie      : "ZS: Zombies can spawn here." []
 @PointClass base(PlayerClass, Angles, ZSSpawn) studio("models/zombie/classic.mdl") = info_player_undead      : "ZS: Zombies can spawn here. Alias of info_player_zombie." []
 @PointClass base(PlayerClass, Angles, ZSSpawn) studio("models/zombie/classic.mdl") = info_player_zombie_boss : "ZS: Boss Zombies will spawn here." []
+@PointClass base(PlayerClass, Angles, ZSSpawn) studio("models/zombie/classic.mdl") = info_player_zombie_bot      : "ZS: Zombie Bots can spawn here." []
 @PointClass base(PlayerClass, Angles, ZSSpawn) studio("models/editor/playerstart.mdl") = info_player_redeemed    : "ZS: Redeemed players can spawn here. Use of this is optional."
 [
 	// Keys
