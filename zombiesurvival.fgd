@@ -123,18 +123,18 @@
 		"buff_zombie_cleanse"	: "Cleanse (Z)"
 		"buff_zombie_dark_power" : "Dark Power (Z)"
 		"buff_zombie_deception"	: "Deception (Z)"
-		"buff_zombie_dread"		: "Dread"
+		"buff_zombie_dread"		: "Dread (Z)"
 		"buff_zombie_earworm"	: "Earworm (Z)"
 		"buff_zombie_fire_claws" : "Fire Claws (Z)"
 		"buff_zombie_frost_claws" : "Frost Claws (Z)"
 		"buff_zombie_hex_claws"	: "Hex Claws (Z)"
 		"buff_zombie_patient_zero" : "Patient Zero (Z)"
-		"buff_zombie_plague_claws"	: "Plague Claws (Z)"
+		"buff_zombie_claws_poison"	: "Poison Claws (Z)"
 		"buff_zombie_rally" : "Rally (Z)"
 		"buff_zombie_rending_claws" : "Rending Claws (Z)"
 		"buff_zombie_shielding_claws" : "Shielding Claws (Z)"
 		"buff_zombie_status_resist" : "Status Resist (Z)"
-		"buff_zombie_thunder_claws" : "Thunder Claws (Z)"
+		"buff_zombie_claws_thunder" : "Thunder Claws (Z)"
 		"buff_zombie_unyielding_strength" : "Unyielding (Z)"
 		"buff_zombie_vampirism" : "Vampirism (Z)"
 		"buff_zombie_wretched_might" : "Wretched Might (Z)"
@@ -155,6 +155,7 @@
 		"debuff_pain"			: "Pain"
 		"debuff_sickness"       : "Sickness"
 		"debuff_waste"          : "Waste"
+		"debuff_dread"          : "Dread"
 
 	]
 	linger(choices) : "Status Linger" : 0 : "Should the status linger after leaving the brush." =
@@ -829,6 +830,11 @@
 		1 : "Yes"
 		0 : "No"
 	]
+	noattributes(choices) : "Disable Attributes" : : "Prevent players from receiving attributes." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
 	globalsigilname(string)  : "Global Sigil Name" : : "Sets the global highlight name of all sigils. Default: 'Sigil'"
 	mapreplays(float)  : "Round Limit" : : "Allows you to override the number of replays. If set to 1 the map will not replay after the first round. If set to 0 the map will allow unlimited restarts up until the timelimit runs out (default 15 minutes). Default: 2"
 	mapreplaytime(float) : "Replay Time Override" : : "Overrides the timelimit for replays. Default: 900 (15 minutes)"
@@ -1017,6 +1023,9 @@
 	input lockclass(string)         : "Forces a class to be locked."
 	input setbossesenabled(integer) : "Enables or disables boss zombies."
 	input unlockwaveclasses(integer) : "Unlocks all classes that would normally be unlocked on the given wave."
+	input unlockwavedestructionclasses(integer) : "Unlocks all destruction classes that would normally be unlocked on the given wave."
+	input unlockwavesupportclasses(integer) : "Unlocks all support classes that would normally be unlocked on the given wave."
+	input unlockwaveassaultclasses(integer) : "Unlocks all assault classes that would normally be unlocked on the given wave."
 
 	// Outputs
 	output OnClassUnlocked(void)    : "Called when the class we're watching's class is unlocked by the game. This output isn't called if the class is unlocked by any logic_classunlock entities, only by the game."
