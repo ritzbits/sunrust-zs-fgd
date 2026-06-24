@@ -29,6 +29,18 @@
 		"logic_barricade"
 		"logic_classunlock"
 		"logic_experience"
+		"logic_nobuy"
+		"logic_winlose"
+		"logic_infliction"
+		"logic_difficulty"
+		"logic_pickups"
+		"logic_antigrief"
+		"logic_winreward"
+		"info_sigilgroup"
+		"point_zsmessage"
+		"info_custommessage"
+		"prop_invitem"
+		"prop_playergib"
 	]
 	"Brush Entities"
 	[
@@ -215,7 +227,7 @@
 		"zombie torso"       : "Zombie Torso"
 		"fast headcrab"      : "Fast Headcrab"
 		"shadow lurker"      : "Shadow Lurker"
-		"shadow walker"      : "Shadow Walker"
+		"frigid walker"      : "Frigid Walker"
 		"skeletal crawler"   : "Skeletal Crawler"
 		"skeletal walker"    : "Skeletal Walker"
 		"wraith"             : "Wraith"
@@ -270,7 +282,7 @@
 		"zombie torso"       : "Zombie Torso"
 		"fast headcrab"      : "Fast Headcrab"
 		"shadow lurker"      : "Shadow Lurker"
-		"shadow walker"      : "Shadow Walker"
+		"frigid walker"      : "Frigid Walker"
 		"skeletal crawler"   : "Skeletal Crawler"
 		"skeletal walker"    : "Skeletal Walker"
 		"wraith"             : "Wraith"
@@ -326,7 +338,7 @@
 		"zombie torso"       : "Zombie Torso"
 		"fast headcrab"      : "Fast Headcrab"
 		"shadow lurker"      : "Shadow Lurker"
-		"shadow walker"      : "Shadow Walker"
+		"frigid walker"      : "Frigid Walker"
 		"skeletal crawler"   : "Skeletal Crawler"
 		"skeletal walker"    : "Skeletal Walker"
 		"wraith"             : "Wraith"
@@ -381,7 +393,7 @@
 		"zombie torso"       : "Zombie Torso"
 		"fast headcrab"      : "Fast Headcrab"
 		"shadow lurker"      : "Shadow Lurker"
-		"shadow walker"      : "Shadow Walker"
+		"frigid walker"      : "Frigid Walker"
 		"skeletal crawler"   : "Skeletal Crawler"
 		"skeletal walker"    : "Skeletal Walker"
 		"wraith"             : "Wraith"
@@ -437,7 +449,7 @@
 		"zombie torso"       : "Zombie Torso"
 		"fast headcrab"      : "Fast Headcrab"
 		"shadow lurker"      : "Shadow Lurker"
-		"shadow walker"      : "Shadow Walker"
+		"frigid walker"      : "Frigid Walker"
 		"skeletal crawler"   : "Skeletal Crawler"
 		"skeletal walker"    : "Skeletal Walker"
 		"wraith"             : "Wraith"
@@ -731,7 +743,7 @@
 		0 : "No"
 	]
 
-	disableannoucner(choices) : "Disable announcer" : 0 : "Disable wave start / end announcement lines from playing" =
+	disableannouncer(choices) : "Disable announcer" : 0 : "Disable wave start / end announcement lines from playing" =
 	[
 		1 : "Yes"
 		0 : "No"
@@ -815,7 +827,7 @@
 		1 : "Yes"
 		0 : "No"
 	]
-	nozombiefalldmg(choices) : "Disable Zombie Fall Damage" : : "Prevents zombies from taking fall damage." =
+	nozombiefalldamage(choices) : "Disable Zombie Fall Damage" : : "Prevents zombies from taking fall damage." =
 	[
 		1 : "Yes"
 		0 : "No"
@@ -825,12 +837,37 @@
 		1 : "Yes"
 		0 : "No"
 	]
-	disablenests(choices) : "Disable Nests" : : "Set sigils to spawn on the start of wave 1, instead of the start of the map." =
+	disablenests(choices) : "Disable Nests" : : "Prevents flesh creeper nests from being built." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+	disablenydusworm(choices) : "Disable Nydus Worm" : : "Prevents nydus worms from spawning." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+	intermissiongas(choices) : "Intermission Gas" : : "Enables zombie gas during wave intermission." =
 	[
 		1 : "Yes"
 		0 : "No"
 	]
 	noattributes(choices) : "Disable Attributes" : : "Prevent players from receiving attributes." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+	nodelayedhealing(choices) : "Disable Delayed Healing" : : "Removes the delay before healing takes effect." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+	notransponder(choices) : "Disable Transponder" : : "Prevents purchasing, deploying, and using prop transponders." =
+	[
+		1 : "Yes"
+		0 : "No"
+	]
+	noproppack(choices) : "Disable Prop Pack" : : "Prevents purchasing and using prop packs." =
 	[
 		1 : "Yes"
 		0 : "No"
@@ -846,6 +883,8 @@
 	sigilcount(float) : "Sigil Count" : : "Allows you to override the number of sigils that spawn. Default: 3"
 	startzombiepercent(float) : "Starting Infliction" : : "Allows you to override the percentage of starting zombies. If set to 0.14 then 14 percent of players will become zombies at the start of a round. You shouldn't need to change this. Default: 0.14 (may vary due to metagame)"
 	demibossbuildfactor(float) : "Demiboss Build Factor" : : "Scales demiboss build up on a particular map. 1 is 100%. 2 is 200%. 0.5 is 50% etc. Default: 1"
+	bulletfalloff(float) : "Bullet Falloff" : : "Multiplier for bullet damage falloff over distance. Default: 1"
+	spawnprotectionmul(float) : "Spawn Protection Multiplier" : : "Multiplier for zombie spawn protection movement speed. Default: 1"
 ]
 
 @PointClass base(Targetname,Origin) iconsprite("particles/smokey") sphere( radius ) = zombiegasses  : "ZS: Manually place a point for the zombies' noxious gases."
@@ -964,6 +1003,19 @@
 	// Inputs
 	input disablethese(string) : "Takes the arguments in the form of a comma-separated array and disables any entities with that name. For example, disablethese objective1,somethingimportant,somethingelse. This would disable nailing of those entities."
 	input enablethese(string)  : "Takes the arguments in the form of a comma-separated array and enables any entities with that name. For example, enablethese objective1,somethingimportant,somethingelse. This would enable nailing of those entities."
+]
+
+@PointClass base(Targetname) iconsprite("editor/logic_barricade.vmt") = logic_antigrief : "ZS: Allows or disallows anti-grief protection on specific entities."
+[
+	// Inputs
+	input disablethese(string) : "Takes a comma-separated list of entity names and disables anti-grief on them."
+	input enablethese(string)  : "Takes a comma-separated list of entity names and enables anti-grief on them."
+]
+
+@PointClass base(Targetname) iconsprite("editor/logic_experience.vmt") = logic_winreward : "ZS: Adjusts XP rewards when humans win the round."
+[
+	// Keys
+	winmulti(float) : "Win XP Multiplier" : 1 : "Multiplier applied to human win XP on this map."
 ]
 
 @PointClass base(Targetname) iconsprite("editor/logic_difficulty.vmt") = logic_difficulty : "ZS: Adjusts the difficulty of the game."
@@ -1121,10 +1173,12 @@
 			"weapon_zs_azrael"             : "Azrael Gas Bolt Bow"
 			"weapon_zs_barrage"            : "Barrage Grenade Launcher"
 			"weapon_zs_barricadekit"       : "Aegis Barricade Kit"
+			"weapon_zs_barricadetrans"     : "Prop Transponder"
 			"weapon_zs_battleaxe"          : "Battleaxe Handgun"
 			"weapon_zs_blaster"            : "Blaster Shotgun"
 			"weapon_zs_bloodshotbomb"      : "Bloodshot bomb"
-			"weapon_zs_boardpack"          : "Junk Pack"
+			"weapon_zs_boardpack"          : "Board Pack"
+			"weapon_zs_junkpack"           : "Junk Pack"
 			"weapon_zs_boomstick"          : "Boomstick"
 			"weapon_zs_brassknuckles"      : "Brass Knuckles"
 			"weapon_zs_broadside"          : "Broadside Missile Launcher"
@@ -1208,6 +1262,7 @@
 			"weapon_zs_pot"                : "Pot"
 			"weapon_zs_powerfists"         : "Power Fists"
 			"weapon_zs_proliferator"       : "Proliferator SMG"
+			"weapon_zs_prop_pack"          : "Prop Pack"
 			"weapon_zs_proxymine"          : "Proxy Mine"
 			"weapon_zs_pulserifle"         : "Adonis Pulse Rifle"
 			"weapon_zs_pushbroom"          : "Push Broom"
@@ -1551,6 +1606,7 @@
 @PointClass base(Weapon) studio("models/weapons/w_crossbow.mdl")                = weapon_zs_azrael             : "Ammo Type: Chemicals.\nLaunches bolts that leave traces of damaging chemical gas. Gas can weaken zombie attacks." []
 @PointClass base(Weapon) studio("models/weapons/w_smg_ump45.mdl")               = weapon_zs_barrage            : "Ammo Type: Explosives.\nFires multiple grenades that detonate on impact with enemies or on the third bounce." []
 @PointClass base(Weapon) studio("models/weapons/w_rocket_launcher.mdl")         = weapon_zs_barricadekit       : "Ammo Type: Boards.\nA ready-to-go, all-in-one board deployer." []
+@PointClass base(Weapon) studio("models/props/deployable/transponder.mdl")      = weapon_zs_barricadetrans    : "Deployable prop transponder for purchasing barricade props." []
 @PointClass base(Weapon) studio("models/weapons/w_pist_usp.mdl")                = weapon_zs_battleaxe          : "Ammo Type: Pistol.\nHigh Damage for a starting pistol." []
 @PointClass base(Weapon) studio("models/weapons/w_supershorty.mdl")             = weapon_zs_blaster            : "Ammo Type: Shotgun.\nA small shotgun" []
 @PointClass base(Weapon) studio("models/healthvial.mdl")                        = weapon_zs_bloodshotbomb      : "A cloud of strength and defence boosting gas.\nAlso has a small blood armor boost." []
@@ -1638,6 +1694,7 @@
 @PointClass base(Weapon) studio("models/props_interiors/pot02a.mdl")            = weapon_zs_pot                : "A pan with longer range" []
 @PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                 = weapon_zs_powerfists         : "A pair of power fists. They are slower than conventional fist combat, but pack a hefty pulse powered punch." []
 @PointClass base(Weapon) studio("models/weapons/w_smg_mac10.mdl")               = weapon_zs_proliferator       : "Ammo Type: SMG. Hold right click to use the Storm firing mode." []
+@PointClass base(Weapon) studio("models/weapons/w_pistol.mdl")                  = weapon_zs_prop_pack          : "Stores up to five props for pickup, throw, and transponder deployment." []
 @PointClass base(Weapon) studio("models/weapons/w_grenade.mdl")                 = weapon_zs_proxymine          : "A proximity mine that explodes when near zombies." []
 @PointClass base(Weapon) studio("models/weapons/w_IRifle.mdl")                  = weapon_zs_pulserifle         : "Ammo Type: Pulse.\nAdonis Pulse Rifle. Deals massive damage and slows targets." []
 @PointClass base(Weapon) studio("models/props_c17/pushbroom.mdl")               = weapon_zs_pushbroom          : "BrooooooooooOOOOOOOOOOOOOM!" []
